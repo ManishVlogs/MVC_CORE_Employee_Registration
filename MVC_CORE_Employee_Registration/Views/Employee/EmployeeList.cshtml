@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MVC_CORE_Employee_Registration.Models.Employee>
+
+@{
+    ViewData["Title"] = "EmployeeList";
+}
+
+<h1>EmployeeList</h1>
+
+<p class="float-right">
+    <a asp-action="CreateEmployee" class="btn btn-outline-primary">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>   
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DeptID)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "CreateEmployee", new { id=item.ID,item.Name,item.Fname ,item.Email ,item.Mobile ,item.description ,item.DeptID },new {@class="btn btn-outline-success"}) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new {id=item.ID},new {@class="btn btn-outline-danger",onclick="return confirm('Are Your SUre Your Want To Delete This Record.')"})
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.DeptID)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+
+
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+        </tr>
+}
+    </tbody>
+</table>
